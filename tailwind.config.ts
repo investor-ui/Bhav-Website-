@@ -8,38 +8,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#05070f',
-          900: '#0a0e1a',
-          800: '#0d1228',
-          700: '#111936',
-          600: '#161f44',
+        surface: {
+          DEFAULT: '#111110',
+          raised: '#1C1B19',
+          overlay: '#242220',
+          muted: '#2e2b28',
         },
         gold: {
-          300: '#e8ca7a',
-          400: '#d4af5a',
-          500: '#c9a84c',
-          600: '#b8952f',
-          700: '#9a7a1e',
+          300: '#F0CF7A',
+          400: '#D4A843',
+          500: '#C49030',
+          600: '#A07210',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       animation: {
-        'ticker': 'ticker 30s linear infinite',
+        'ticker': 'ticker 40s linear infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         ticker: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
         },
       },
       backgroundImage: {

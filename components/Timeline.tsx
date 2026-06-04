@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { fadeUp, EASE } from './animations'
 
 const events = [
   {
@@ -44,25 +45,25 @@ const events = [
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-24 lg:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e1a] via-[#0c1020] to-[#0a0e1a]" />
+    <section id="timeline" className="py-24 lg:py-32 relative overflow-hidden bg-[#141311]">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(212,168,67,0.04),transparent)]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/5 mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#c9a84c] uppercase">IPO Timeline</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D4A843]/20 bg-[#D4A843]/[0.06] mb-6">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-[#D4A843] uppercase">IPO Timeline</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2EDE8] mb-4">
             From Incorporation to{' '}
             <span className="text-gradient-gold">$100M Trust</span>
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto">
+          <p className="text-[#A89F94] max-w-xl mx-auto">
             A rapid path from formation to NASDAQ listing, demonstrating disciplined execution
             and regulatory readiness.
           </p>
@@ -70,59 +71,56 @@ export default function Timeline() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#c9a84c]/30 via-[#c9a84c]/15 to-transparent sm:-translate-x-px" />
+          {/* Center line */}
+          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px sm:-translate-x-px">
+            <div className="h-full bg-gradient-to-b from-[#D4A843]/35 via-[#D4A843]/15 to-[#D4A843]/5" />
+          </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {events.map((event, i) => (
               <motion.div
                 key={event.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={`relative flex items-start gap-6 sm:gap-0 ${
-                  i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
-                }`}
+                viewport={{ once: true, margin: '-20px' }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: EASE }}
+                className={`relative flex items-start gap-0 ${i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
               >
-                {/* Left/right content */}
-                <div className={`flex-1 sm:px-10 pl-12 sm:pl-0 ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'}`}>
-                  <div
-                    className={`inline-block p-5 rounded-xl border transition-all duration-300 ${
-                      event.highlight
-                        ? 'border-[#c9a84c]/35 bg-[#c9a84c]/[0.06] glow-gold-sm'
-                        : event.status === 'pending'
-                        ? 'border-white/8 bg-white/[0.015]'
-                        : 'border-[#c9a84c]/12 bg-white/[0.02]'
+                {/* Content side */}
+                <div className={`flex-1 pl-12 sm:pl-0 ${i % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12 sm:text-left'}`}>
+                  <motion.div
+                    whileHover={{ y: -3, transition: { duration: 0.2, ease: EASE } }}
+                    className={`inline-block p-5 rounded-2xl max-w-sm ${event.highlight ? 'card-gold' : 'card'} ${
+                      event.status === 'pending' ? 'opacity-60' : ''
                     }`}
                   >
-                    <div className={`text-xs font-bold tracking-widest uppercase mb-1.5 ${
-                      event.status === 'pending' ? 'text-white/30' : 'text-[#c9a84c]'
+                    <p className={`text-[10px] font-bold tracking-widest uppercase mb-1.5 ${
+                      event.status === 'pending' ? 'text-[#6B6560]' : 'text-[#D4A843]'
                     }`}>
                       {event.date}
-                    </div>
-                    <h3 className="text-base font-bold text-white mb-2">{event.title}</h3>
-                    <p className="text-sm text-white/50 leading-relaxed max-w-sm">{event.description}</p>
-                  </div>
+                    </p>
+                    <h3 className="font-display text-base font-bold text-[#F2EDE8] mb-2">{event.title}</h3>
+                    <p className="text-sm text-[#A89F94] leading-relaxed">{event.description}</p>
+                  </motion.div>
                 </div>
 
-                {/* Center dot */}
-                <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 flex items-center justify-center w-8 h-8 -translate-x-4 sm:translate-x-0">
+                {/* Dot */}
+                <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 -translate-x-4 sm:translate-x-0 flex items-center justify-center z-10 mt-5">
                   <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
                     event.status === 'pending'
-                      ? 'border-white/20 bg-[#0a0e1a]'
+                      ? 'border-white/20 bg-[#141311]'
                       : event.highlight
-                      ? 'border-[#c9a84c] bg-[#c9a84c] shadow-lg shadow-[#c9a84c]/30'
-                      : 'border-[#c9a84c] bg-[#c9a84c]/30'
+                      ? 'border-[#D4A843] bg-[#D4A843] shadow-[0_0_16px_rgba(212,168,67,0.5)]'
+                      : 'border-[#D4A843] bg-[#D4A843]/30'
                   }`}>
                     {event.status === 'complete' && !event.highlight && (
-                      <div className="w-2 h-2 rounded-full bg-[#c9a84c]" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#D4A843]" />
                     )}
                   </div>
                 </div>
 
-                {/* Empty side for zigzag */}
-                <div className="hidden sm:block flex-1 sm:px-10" />
+                {/* Empty side */}
+                <div className="hidden sm:block flex-1" />
               </motion.div>
             ))}
           </div>
