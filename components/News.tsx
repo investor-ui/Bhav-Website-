@@ -55,17 +55,15 @@ const articles = [
 ]
 
 const tagStyles: Record<string, string> = {
-  gold: 'text-[#D4A843] border-[#D4A843]/28 bg-[#D4A843]/[0.08]',
-  blue: 'text-blue-400 border-blue-400/25 bg-blue-400/[0.07]',
-  green: 'text-emerald-400 border-emerald-400/25 bg-emerald-400/[0.07]',
-  purple: 'text-purple-400 border-purple-400/25 bg-purple-400/[0.07]',
+  gold: 'text-gold-600 border-gold-400/35 bg-gold-400/[0.08]',
+  blue: 'text-blue-700 border-blue-400/30 bg-blue-50',
+  green: 'text-emerald-700 border-emerald-400/30 bg-emerald-50',
+  purple: 'text-purple-700 border-purple-400/30 bg-purple-50',
 }
 
 export default function News() {
   return (
-    <section id="news" className="py-24 lg:py-32 relative overflow-hidden bg-[#111110]">
-      <div className="absolute right-0 top-1/4 w-80 h-80 bg-[#D4A843]/[0.03] rounded-full blur-3xl pointer-events-none" />
-
+    <section id="news" className="py-24 lg:py-32 relative overflow-hidden bg-white scroll-mt-24">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}
@@ -74,14 +72,14 @@ export default function News() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D4A843]/20 bg-[#D4A843]/[0.06] mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#D4A843] uppercase">News & Developments</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-navy-900/15 bg-navy-900/[0.04] mb-6">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-navy-700 uppercase">News & Developments</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2EDE8] mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-5">
             Market Intelligence &amp;{' '}
             <span className="text-gradient-gold">Corporate Updates</span>
           </h2>
-          <p className="text-[#A89F94] max-w-xl mx-auto">
+          <p className="text-navy-500 max-w-xl mx-auto">
             Key developments shaping our thesis sectors and corporate milestones
             in BHAV&apos;s journey to completion.
           </p>
@@ -92,43 +90,38 @@ export default function News() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {articles.map((article) => (
             <motion.article
               key={article.title}
               variants={itemVariants}
               whileHover={{ y: -4, transition: { duration: 0.22, ease: EASE } }}
-              className="group relative flex flex-col p-6 rounded-2xl cursor-default overflow-hidden"
-              style={{ background: '#1C1B19', border: '1px solid rgba(255,255,255,0.08)' }}
+              className="group relative flex flex-col p-6 rounded-2xl cursor-default card-light"
             >
-              {/* Top rim */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              {/* Hover glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: 'radial-gradient(300px circle at 50% 0%, rgba(212,168,67,0.05), transparent 70%)' }}
-              />
+              {/* Gold top edge on hover */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/55 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
 
               {/* Tag + date */}
               <div className="flex items-center justify-between mb-4">
                 <span className={`text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-full border ${tagStyles[article.tagColor]}`}>
                   {article.tag}
                 </span>
-                <span className="text-[11px] text-[#6B6560]">{article.date}</span>
+                <span className="text-[11px] text-navy-400">{article.date}</span>
               </div>
 
               {/* Title */}
-              <h3 className="font-display text-sm font-bold text-[#F2EDE8] mb-3 leading-snug flex-1 group-hover:text-[#F0CF7A] transition-colors duration-200">
+              <h3 className="font-display text-base font-bold text-navy-900 mb-3 leading-snug flex-1 group-hover:text-navy-700 transition-colors duration-200">
                 {article.title}
               </h3>
 
               {/* Summary */}
-              <p className="text-xs text-[#A89F94] leading-relaxed mb-4">{article.summary}</p>
+              <p className="text-xs text-navy-500 leading-relaxed mb-4">{article.summary}</p>
 
               {/* Source */}
-              <div className="flex items-center gap-2 pt-3 border-t border-white/[0.05]">
-                <div className="w-1 h-1 rounded-full bg-[#D4A843]/40" />
-                <span className="text-[10px] text-[#6B6560] tracking-wider uppercase">{article.source}</span>
+              <div className="flex items-center gap-2 pt-3 border-t border-navy-900/[0.07]">
+                <div className="w-1 h-1 rounded-full bg-gold-400/60" />
+                <span className="text-[10px] text-navy-400 tracking-wider uppercase">{article.source}</span>
               </div>
             </motion.article>
           ))}

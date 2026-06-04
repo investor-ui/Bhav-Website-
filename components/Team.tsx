@@ -28,9 +28,7 @@ const directors = [
 
 export default function Team() {
   return (
-    <section id="team" className="py-24 lg:py-32 relative overflow-hidden bg-[#111110]">
-      <div className="absolute left-0 top-1/3 w-80 h-80 bg-[#D4A843]/[0.03] rounded-full blur-3xl pointer-events-none" />
-
+    <section id="team" className="py-24 lg:py-32 relative overflow-hidden bg-white scroll-mt-24">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -40,14 +38,14 @@ export default function Team() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D4A843]/20 bg-[#D4A843]/[0.06] mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#D4A843] uppercase">Leadership</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-navy-900/15 bg-navy-900/[0.04] mb-6">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-navy-700 uppercase">Leadership</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2EDE8] mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-5">
             Executive{' '}
             <span className="text-gradient-gold">Team</span>
           </h2>
-          <p className="text-[#A89F94] max-w-xl mx-auto">
+          <p className="text-navy-500 max-w-xl mx-auto">
             Experienced operators, technologists, and capital markets professionals
             united by a shared vision for the intelligent machines era.
           </p>
@@ -66,30 +64,27 @@ export default function Team() {
               key={exec.name}
               variants={itemVariants}
               whileHover={{ y: -4, transition: { duration: 0.22, ease: EASE } }}
-              className="group relative p-7 rounded-2xl overflow-hidden"
-              style={{ background: '#1C1B19', border: '1px solid rgba(255,255,255,0.08)' }}
+              className="group relative p-7 rounded-2xl overflow-hidden card-light"
             >
-              {/* Top rim */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              {/* Gold edge on hover */}
-              <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4A843]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Gold top edge on hover */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
 
               <div className="flex items-start gap-5">
                 {/* Avatar */}
-                <div className="flex-shrink-0 relative">
-                  <div className="w-16 h-16 rounded-full bg-[#D4A843]/10 border-2 border-[#D4A843]/25 group-hover:border-[#D4A843]/55 transition-colors duration-300 flex items-center justify-center">
-                    <span className="font-display text-xl font-bold text-[#D4A843]">{exec.initials}</span>
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-navy-900/[0.06] border-2 border-navy-900/15 group-hover:border-gold-400/50 transition-colors duration-300 flex items-center justify-center">
+                    <span className="font-display text-xl font-bold text-navy-700">{exec.initials}</span>
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-display text-xl font-bold text-[#F2EDE8] mb-0.5">{exec.name}</h3>
-                  <p className="text-sm text-[#D4A843] font-medium mb-1.5">{exec.title}</p>
-                  <span className="inline-block text-[10px] font-semibold tracking-[0.15em] text-[#6B6560] uppercase border border-white/[0.08] px-2.5 py-0.5 rounded-full">
+                  <h3 className="font-display text-xl font-bold text-navy-900 mb-0.5">{exec.name}</h3>
+                  <p className="text-sm text-gold-500 font-semibold mb-1.5">{exec.title}</p>
+                  <span className="inline-block text-[10px] font-semibold tracking-[0.15em] text-navy-500 uppercase border border-navy-900/12 px-2.5 py-0.5 rounded-full">
                     {exec.role}
                   </span>
                 </div>
               </div>
-              <p className="mt-5 text-sm text-[#A89F94] leading-relaxed">{exec.bio}</p>
+              <p className="mt-5 text-sm text-navy-500 leading-relaxed">{exec.bio}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -103,9 +98,9 @@ export default function Team() {
           className="mb-8"
         >
           <div className="flex items-center gap-4 mb-7">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#D4A843]/15" />
-            <span className="text-[10px] font-bold tracking-[0.22em] text-[#D4A843]/50 uppercase">Independent Directors</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#D4A843]/15" />
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-navy-900/12" />
+            <span className="text-[10px] font-bold tracking-[0.22em] text-navy-400 uppercase">Independent Directors</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-navy-900/12" />
           </div>
 
           <motion.div
@@ -120,21 +115,20 @@ export default function Team() {
                 key={dir.name}
                 variants={itemVariants}
                 whileHover={{ y: -3, transition: { duration: 0.2, ease: EASE } }}
-                className="p-5 rounded-xl"
-                style={{ background: '#1C1B19', border: '1px solid rgba(255,255,255,0.07)' }}
+                className="p-5 rounded-xl card-light"
               >
                 <div className="flex items-center gap-3 mb-3.5">
-                  <div className="w-10 h-10 rounded-full border border-[#D4A843]/22 bg-[#D4A843]/8 flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-[#D4A843]">{dir.initials}</span>
+                  <div className="w-10 h-10 rounded-full border border-navy-900/15 bg-navy-900/[0.04] flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-navy-700">{dir.initials}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-[#F2EDE8] leading-tight">{dir.name}</p>
-                    <p className="text-[10px] text-[#6B6560] mt-0.5">{dir.title}</p>
+                    <p className="text-sm font-bold text-navy-900 leading-tight">{dir.name}</p>
+                    <p className="text-[10px] text-navy-400 mt-0.5">{dir.title}</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {dir.committees.map((c) => (
-                    <span key={c} className="text-[9px] font-bold tracking-wider text-[#D4A843]/55 border border-[#D4A843]/15 px-2 py-0.5 rounded-full">
+                    <span key={c} className="text-[9px] font-bold tracking-wider text-gold-600 border border-gold-400/25 px-2 py-0.5 rounded-full">
                       {c}
                     </span>
                   ))}
@@ -152,20 +146,18 @@ export default function Team() {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-4 mb-7">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#D4A843]/15" />
-            <span className="text-[10px] font-bold tracking-[0.22em] text-[#D4A843]/50 uppercase">Board Advisor</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#D4A843]/15" />
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-navy-900/12" />
+            <span className="text-[10px] font-bold tracking-[0.22em] text-navy-400 uppercase">Board Advisor</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-navy-900/12" />
           </div>
-
           <div className="flex justify-center">
-            <div className="p-5 rounded-xl flex items-center gap-4 min-w-[260px]"
-              style={{ background: '#1C1B19', border: '1px solid rgba(255,255,255,0.07)' }}>
-              <div className="w-10 h-10 rounded-full border border-[#D4A843]/22 bg-[#D4A843]/8 flex items-center justify-center">
-                <span className="text-sm font-bold text-[#D4A843]">RS</span>
+            <div className="p-5 rounded-xl flex items-center gap-4 min-w-[260px] card-light">
+              <div className="w-10 h-10 rounded-full border border-navy-900/15 bg-navy-900/[0.04] flex items-center justify-center">
+                <span className="text-sm font-bold text-navy-700">RS</span>
               </div>
               <div>
-                <p className="text-sm font-bold text-[#F2EDE8]">Rajan Singhal</p>
-                <p className="text-xs text-[#D4A843]/50 mt-0.5">Board Advisor</p>
+                <p className="text-sm font-bold text-navy-900">Rajan Singhal</p>
+                <p className="text-xs text-gold-500/80 mt-0.5">Board Advisor</p>
               </div>
             </div>
           </div>

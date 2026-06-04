@@ -45,9 +45,7 @@ const events = [
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-24 lg:py-32 relative overflow-hidden bg-[#141311]">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(212,168,67,0.04),transparent)]" />
-
+    <section id="timeline" className="py-24 lg:py-32 relative overflow-hidden bg-sand-200 scroll-mt-24">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}
@@ -56,14 +54,14 @@ export default function Timeline() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D4A843]/20 bg-[#D4A843]/[0.06] mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#D4A843] uppercase">IPO Timeline</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-navy-900/15 bg-navy-900/[0.04] mb-6">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-navy-700 uppercase">IPO Timeline</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2EDE8] mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-5">
             From Incorporation to{' '}
             <span className="text-gradient-gold">$100M Trust</span>
           </h2>
-          <p className="text-[#A89F94] max-w-xl mx-auto">
+          <p className="text-navy-500 max-w-xl mx-auto">
             A rapid path from formation to NASDAQ listing, demonstrating disciplined execution
             and regulatory readiness.
           </p>
@@ -73,7 +71,7 @@ export default function Timeline() {
         <div className="relative">
           {/* Center line */}
           <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px sm:-translate-x-px">
-            <div className="h-full bg-gradient-to-b from-[#D4A843]/35 via-[#D4A843]/15 to-[#D4A843]/5" />
+            <div className="h-full bg-gradient-to-b from-navy-900/30 via-navy-900/12 to-navy-900/5" />
           </div>
 
           <div className="space-y-6 sm:space-y-8">
@@ -83,24 +81,30 @@ export default function Timeline() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-20px' }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: EASE }}
-                className={`relative flex items-start gap-0 ${i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
+                transition={{ duration: 0.7, delay: i * 0.07, ease: EASE }}
+                className={`relative flex items-start ${i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
               >
-                {/* Content side */}
+                {/* Content */}
                 <div className={`flex-1 pl-12 sm:pl-0 ${i % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12 sm:text-left'}`}>
                   <motion.div
                     whileHover={{ y: -3, transition: { duration: 0.2, ease: EASE } }}
-                    className={`inline-block p-5 rounded-2xl max-w-sm ${event.highlight ? 'card-gold' : 'card'} ${
-                      event.status === 'pending' ? 'opacity-60' : ''
-                    }`}
+                    className={`inline-block p-5 rounded-2xl max-w-sm ${
+                      event.highlight
+                        ? 'bg-navy-900 text-white'
+                        : 'card-light'
+                    } ${event.status === 'pending' ? 'opacity-55' : ''}`}
                   >
                     <p className={`text-[10px] font-bold tracking-widest uppercase mb-1.5 ${
-                      event.status === 'pending' ? 'text-[#6B6560]' : 'text-[#D4A843]'
+                      event.status === 'pending' ? 'text-navy-400' : event.highlight ? 'text-gold-400' : 'text-gold-500'
                     }`}>
                       {event.date}
                     </p>
-                    <h3 className="font-display text-base font-bold text-[#F2EDE8] mb-2">{event.title}</h3>
-                    <p className="text-sm text-[#A89F94] leading-relaxed">{event.description}</p>
+                    <h3 className={`font-display text-base font-bold mb-2 ${
+                      event.highlight ? 'text-white' : 'text-navy-900'
+                    }`}>{event.title}</h3>
+                    <p className={`text-sm leading-relaxed ${
+                      event.highlight ? 'text-navy-300' : 'text-navy-500'
+                    }`}>{event.description}</p>
                   </motion.div>
                 </div>
 
@@ -108,13 +112,13 @@ export default function Timeline() {
                 <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 -translate-x-4 sm:translate-x-0 flex items-center justify-center z-10 mt-5">
                   <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
                     event.status === 'pending'
-                      ? 'border-white/20 bg-[#141311]'
+                      ? 'border-navy-400/30 bg-sand-200'
                       : event.highlight
-                      ? 'border-[#D4A843] bg-[#D4A843] shadow-[0_0_16px_rgba(212,168,67,0.5)]'
-                      : 'border-[#D4A843] bg-[#D4A843]/30'
+                      ? 'border-gold-400 bg-gold-400 shadow-[0_0_16px_rgba(212,168,67,0.4)]'
+                      : 'border-navy-700 bg-navy-700'
                   }`}>
                     {event.status === 'complete' && !event.highlight && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#D4A843]" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     )}
                   </div>
                 </div>
