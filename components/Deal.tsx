@@ -51,9 +51,7 @@ export default function Deal() {
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold-400/22 bg-gold-400/[0.06] mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-gold-400 uppercase">Deal Structure</span>
-          </div>
+          <p className="text-xs font-bold tracking-[0.25em] text-gold-400 uppercase mb-4">Deal Structure</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             IPO Summary &amp;{' '}
             <span className="text-gradient-gold">Offering Terms</span>

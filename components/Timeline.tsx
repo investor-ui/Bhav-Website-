@@ -5,126 +5,110 @@ import { fadeUp, EASE } from './animations'
 
 const events = [
   {
-    date: '2025',
-    title: 'Incorporation',
-    description: 'BHAV Acquisition Corp incorporated in the Cayman Islands as a blank check company.',
-    status: 'complete',
-  },
-  {
     date: 'Feb 2026',
     title: 'S-1 Filed with SEC',
-    description: 'Registration statement on Form S-1 filed with the U.S. Securities and Exchange Commission. File No. 333-293399.',
+    description: 'Registration statement on Form S-1 filed. File No. 333-293399.',
     status: 'complete',
   },
   {
     date: 'Mar 18, 2026',
-    title: 'S-1 Effective & IPO Priced',
-    description: 'SEC declares the S-1 registration statement effective. IPO priced at $10.00 per unit with 10,000,000 units offered.',
+    title: 'S-1 Declared Effective',
+    description: 'SEC declares registration effective. IPO priced at $10.00 per unit.',
     status: 'complete',
   },
   {
     date: 'Mar 19, 2026',
-    title: 'NASDAQ Trading Begins',
-    description: 'BHAV units begin trading on the NASDAQ Global Market under ticker symbol BHAVU.',
+    title: 'NASDAQ Listing',
+    description: 'Units begin trading on NASDAQ Global Market under ticker BHAVU.',
     status: 'complete',
   },
   {
     date: 'Mar 20, 2026',
-    title: 'IPO Closed · $100M in Trust',
-    description: 'Offering closes successfully. $100,000,000 deposited into trust account held by Continental Stock Transfer & Trust Company.',
+    title: '$100M IPO Closes',
+    description: '$100,000,000 deposited into trust with Continental Stock Transfer & Trust.',
     status: 'complete',
     highlight: true,
   },
   {
     date: 'TBD',
-    title: 'Initial Business Combination',
-    description: 'BHAV identifies and completes a business combination with a target in Advanced Robotics, EVs, Drones & UAS, or Fintech. Window: 18 months (extendable to 21).',
+    title: 'Business Combination',
+    description: '18-month window to close in Robotics, EVs, Drones & UAS, or Fintech.',
     status: 'pending',
   },
 ]
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-24 lg:py-32 relative overflow-hidden bg-sand-200 scroll-mt-24">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="timeline" className="py-24 lg:py-32 bg-white scroll-mt-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-navy-900/15 bg-navy-900/[0.04] mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-navy-700 uppercase">IPO Timeline</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-5">
+          <p className="text-xs font-bold tracking-[0.25em] text-gold-500 uppercase mb-3">IPO Timeline</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900">
             From Incorporation to{' '}
             <span className="text-gradient-gold">$100M Trust</span>
           </h2>
-          <p className="text-navy-500 max-w-xl mx-auto">
-            A rapid path from formation to NASDAQ listing, demonstrating disciplined execution
-            and regulatory readiness.
-          </p>
         </motion.div>
 
-        {/* Timeline */}
+        {/* Timeline list */}
         <div className="relative">
-          {/* Center line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px sm:-translate-x-px">
-            <div className="h-full bg-gradient-to-b from-navy-900/30 via-navy-900/12 to-navy-900/5" />
-          </div>
+          {/* Vertical rule */}
+          <div className="absolute left-[7.5rem] top-0 bottom-0 w-px bg-navy-900/10 hidden sm:block" />
 
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-0 divide-y divide-navy-900/[0.06]">
             {events.map((event, i) => (
               <motion.div
                 key={event.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-20px' }}
-                transition={{ duration: 0.7, delay: i * 0.07, ease: EASE }}
-                className={`relative flex items-start ${i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
+                transition={{ duration: 0.65, delay: i * 0.06, ease: EASE }}
+                className={`relative flex items-start gap-8 py-7 ${event.status === 'pending' ? 'opacity-50' : ''}`}
               >
-                {/* Content */}
-                <div className={`flex-1 pl-12 sm:pl-0 ${i % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12 sm:text-left'}`}>
-                  <motion.div
-                    whileHover={{ y: -3, transition: { duration: 0.2, ease: EASE } }}
-                    className={`inline-block p-5 rounded-2xl max-w-sm ${
-                      event.highlight
-                        ? 'bg-navy-900 text-white'
-                        : 'card-light'
-                    } ${event.status === 'pending' ? 'opacity-55' : ''}`}
-                  >
-                    <p className={`text-[10px] font-bold tracking-widest uppercase mb-1.5 ${
-                      event.status === 'pending' ? 'text-navy-400' : event.highlight ? 'text-gold-400' : 'text-gold-500'
-                    }`}>
-                      {event.date}
-                    </p>
-                    <h3 className={`font-display text-base font-bold mb-2 ${
-                      event.highlight ? 'text-white' : 'text-navy-900'
-                    }`}>{event.title}</h3>
-                    <p className={`text-sm leading-relaxed ${
-                      event.highlight ? 'text-navy-300' : 'text-navy-500'
-                    }`}>{event.description}</p>
-                  </motion.div>
+                {/* Date */}
+                <div className="w-28 flex-shrink-0 text-right hidden sm:block">
+                  <span className={`text-[11px] font-bold tracking-[0.15em] uppercase ${
+                    event.highlight ? 'text-gold-500' : event.status === 'pending' ? 'text-navy-400' : 'text-navy-500'
+                  }`}>
+                    {event.date}
+                  </span>
                 </div>
 
                 {/* Dot */}
-                <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 -translate-x-4 sm:translate-x-0 flex items-center justify-center z-10 mt-5">
-                  <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                    event.status === 'pending'
-                      ? 'border-navy-400/30 bg-sand-200'
-                      : event.highlight
-                      ? 'border-gold-400 bg-gold-400 shadow-[0_0_16px_rgba(212,168,67,0.4)]'
+                <div className="hidden sm:flex items-center justify-center flex-shrink-0 mt-0.5 relative z-10">
+                  <div className={`w-3.5 h-3.5 rounded-full border-2 ${
+                    event.highlight
+                      ? 'border-gold-400 bg-gold-400 shadow-[0_0_12px_rgba(212,168,67,0.4)]'
+                      : event.status === 'pending'
+                      ? 'border-navy-300 bg-white'
                       : 'border-navy-700 bg-navy-700'
-                  }`}>
-                    {event.status === 'complete' && !event.highlight && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                    )}
-                  </div>
+                  }`} />
                 </div>
 
-                {/* Empty side */}
-                <div className="hidden sm:block flex-1" />
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  {/* Mobile date */}
+                  <span className={`sm:hidden text-[11px] font-bold tracking-[0.15em] uppercase block mb-1 ${
+                    event.highlight ? 'text-gold-500' : 'text-navy-400'
+                  }`}>{event.date}</span>
+
+                  <h3 className={`font-display text-lg font-bold mb-1 ${
+                    event.highlight ? 'text-navy-900' : 'text-navy-900'
+                  }`}>
+                    {event.title}
+                    {event.highlight && (
+                      <span className="ml-2.5 inline-flex items-center text-[10px] font-bold tracking-wider text-gold-500 border border-gold-400/35 rounded-full px-2 py-0.5 align-middle" style={{ fontFamily: 'var(--font-body)' }}>
+                        COMPLETED
+                      </span>
+                    )}
+                  </h3>
+                  <p className="text-sm text-navy-500 leading-relaxed">{event.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>

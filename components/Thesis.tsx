@@ -112,9 +112,7 @@ export default function Thesis() {
           viewport={{ once: true, amount: 0.3 }}
           className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-navy-900/15 bg-navy-900/[0.04] mb-6">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-navy-700 uppercase">Investment Thesis</span>
-          </div>
+          <p className="text-xs font-bold tracking-[0.25em] text-gold-500 uppercase mb-4">Investment Thesis</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-5">
             Four Pillars of{' '}
             <span className="text-gradient-gold">Intelligent Innovation</span>
