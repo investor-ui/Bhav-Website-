@@ -94,27 +94,23 @@ export default function Governance() {
                   className="grid grid-cols-12 px-6 py-4 hover:bg-white/[0.02] transition-colors"
                 >
                   <div className="col-span-4">
-                    <p className="text-sm font-semibold text-white">{member.name}</p>
+                    <p className="text-sm text-white">{member.name}</p>
                   </div>
                   <div className="col-span-3">
-                    <p className="text-xs text-navy-300">{member.role}</p>
+                    <p className="text-sm text-navy-400">{member.role}</p>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-2 flex items-center">
                     {member.independent
-                      ? <span className="text-xs font-semibold text-emerald-400">Yes</span>
-                      : <span className="text-xs text-navy-500">No</span>
+                      ? <span className="text-sm text-navy-200">✓</span>
+                      : <span className="text-sm text-navy-600">—</span>
                     }
                   </div>
                   <div className="col-span-3">
-                    <div className="flex flex-wrap gap-1">
-                      {member.committees.map((c) => (
-                        <span key={c} className={`text-[9px] font-semibold px-1.5 py-0.5 rounded ${
-                          c === '—' ? 'text-navy-500' : 'text-gold-400/70 border border-gold-400/18'
-                        }`}>
-                          {c}
-                        </span>
-                      ))}
-                    </div>
+                    <p className={`text-[11px] leading-snug ${
+                      member.committees[0] === '—' ? 'text-navy-600' : 'text-navy-300'
+                    }`}>
+                      {member.committees[0] === '—' ? '—' : member.committees.join(' · ')}
+                    </p>
                   </div>
                 </motion.div>
               ))}
