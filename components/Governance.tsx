@@ -51,16 +51,14 @@ export default function Governance() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-12"
         >
           <p className="text-xs font-bold tracking-[0.25em] text-gold-400 uppercase mb-4">Governance</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5">
-            Board &amp;{' '}
-            <span className="text-gradient-gold">Corporate Governance</span>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
+            Board of Directors &amp; Corporate Structure
           </h2>
-          <p className="text-navy-300 max-w-xl mx-auto">
-            BHAV maintains rigorous governance standards consistent with NASDAQ requirements
-            and SEC regulations applicable to blank check companies.
+          <p className="text-navy-400 max-w-2xl text-sm leading-relaxed">
+            NASDAQ-listed · CIK 0002097288 · File No. 333-293399 · Incorporated in the Cayman Islands
           </p>
         </motion.div>
 
