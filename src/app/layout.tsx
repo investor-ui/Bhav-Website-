@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Serif_Display, Syne, JetBrains_Mono } from 'next/font/google'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import './globals.css'
 
 // ─── Font Loading ─────────────────────────────────────────────────────────
@@ -82,7 +84,11 @@ export default function RootLayout({
       className={`${dmSerifDisplay.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-sans antialiased bg-bg-deep text-primary">
-        {children}
+        <Navbar />
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
